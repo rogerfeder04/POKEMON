@@ -4,20 +4,13 @@ import { quasar, transformAssetUrls } from '@quasar/vite-plugin'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/POKEMON/',
-  //aca se pone el nombre del repositorio en github
+  base: '/POKEMON/', 
   plugins: [
     vue({
-    template: { transformAssetUrls },
+      template: { transformAssetUrls },
     }),
-
-    // @quasar/plugin-vite options list:
-    // https://github.com/quasarframework/quasar/blob/dev/vite-plugin/index.d.ts
     quasar({
       sassVariables: 'src/quasar-variables.sass'
     }),
-   
-
   ],
-
 })
