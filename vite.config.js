@@ -4,7 +4,7 @@ import { quasar, transformAssetUrls } from '@quasar/vite-plugin'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-
+  base: '/POKEMON/',
   //aca se pone el nombre del repositorio en github
   plugins: [
     vue({
@@ -19,5 +19,5 @@ export default defineConfig({
    
 
   ],
-  base: '/POKEMON/'
+
 })
