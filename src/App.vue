@@ -2,7 +2,8 @@
   <div>
   <!-- <div :style="{ backgroundColor: getColor(pokType2) }"> -->
        <div :style="{ backgroundColor: getColor(pokType2[0]) }">
-    <div class="search-container q-pa-md">
+        <div id="cajaPoke" >
+        <div class="search-container q-pa-md">
       
       <div class="q-gutter-md" style="max-width: 300px; margin: 0 auto">
         <q-input
@@ -16,8 +17,8 @@
       </div>
     </div>
 
-    <div id="cajaPoke" v-if="pokeapp">
-      <div id="resumen_pokemon" class="pokemon-container">
+   
+      <div id="resumen_pokemon" class="pokemon-container" v-if="pokeapp">
         <div class="pokemon-image">
           <h5 class="id">#{{ pokId }}</h5>
           <img :src="imgPokemon" alt="Imagen de {{ pokNombre }}" />
@@ -29,7 +30,7 @@
 
         <h5>Altura: {{ pokAltura }}M</h5>
         <h5>Peso: {{ pokPeso }}k</h5>
-        <h5>Tipo Elemento: 
+        <h5>Elemento(s): 
           <button id="typos">
           <span :style="{ backgroundColor: getColor(pokType2[0]) }">{{ pokType2[0] }}</span> 
           <span :style="{ backgroundColor: getColor(pokType2[1]) }">{{ pokType2[1] }}</span>
@@ -40,7 +41,7 @@
       <div id="habilidades" v-if="pokeapp" class="habilidades-container">
         <div id="barras">
           <div class="q-pa-md habilidades-barras">
-            <h6>HABILIDADES</h6>
+            <h6 class="litle">HABILIDADES</h6>
             <h6>HP {{ Hp }}</h6>
             <q-linear-progress :value="Hp / 100" class="q-mt-md" />
 
@@ -186,27 +187,27 @@ async function traer() {
 <style scoped>
 
 #cajaPoke {
-  margin-top: 68px;
+
   display: flex;
   flex-direction: column; /* Cambiar a columna para mejor adaptabilidad en pantallas pequeñas */
   gap: 10px;
-  border: 2px solid #2c3e50;
-  border-radius: 15px;
+  border: 5px solid #2c3e50;
+  border-radius: 25px;
   justify-content: center;
   align-items: center;
   max-width: 100%; /* Asegura que la caja no exceda el ancho del contenedor */
 }
 
 #typos{
-  /* border: none; */
-  padding: 5px 10px;
+  border: none;
+  /* padding: 5px 10px; */
   border-radius: 5px;
   row-gap: 2px;
   background-color: rgb(202, 198, 198);
   cursor: pointer;
 }
 #habilidades {
-  font-size: 1rem;
+  font-size: 2rem;
   text-align: center; /* Centrar texto para mejor apariencia en pantallas pequeñas */
 }
 
@@ -241,7 +242,9 @@ async function traer() {
   text-align: left;
   margin: 0.1rem 0;
 }
-
+.litle{
+  color:red
+}
 .q-linear-progress {
   width: 100%;
 }
@@ -260,13 +263,14 @@ async function traer() {
 .nombre {
   color: #ff09c8;
   text-align: center; /* Centrar el nombre para mejor apariencia en pantallas pequeñas */
-  font-size: 1.2rem; /* Ajustar tamaño de fuente para mejor legibilidad */
+  /* font-size: 2.5rem; Ajustar tamaño de fuente para mejor legibilidad */
 }
 
 /* Media queries para responsividad */
 @media (min-width: 600px) {
   #cajaPoke {
     flex-direction: row; /* Cambiar a fila en pantallas más grandes */
+  height: 100vh;
   }
 
   .search-button {
@@ -274,7 +278,7 @@ async function traer() {
   }
 
   .nombre {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 }
 </style>
